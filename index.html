@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahul K - Portfolio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0d0d0d;
+      color: #fff;
+      scroll-behavior: smooth;
+    }
+    body::before {
+      content: "";
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(270deg, #ff6ec7, #7367f0, #32e0c4, #ffcc70);
+      background-size: 800% 800%;
+      animation: gradientShift 20s ease infinite;
+      z-index: -2;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .social-bar {
+      position: fixed; top: 20px; right: 30px;
+      display: flex; gap: 20px; z-index: 10;
+    }
+    .social-bar a img {
+      width: 28px; height: 28px;
+      filter: drop-shadow(0 0 5px rgba(255,255,255,0.6));
+      transition: transform 0.3s, filter 0.3s;
+    }
+    .social-bar a:hover img {
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 8px #ffcc70);
+    }
+    header {
+      height: 70vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+    }
+    header h1 {
+      font-size: 3.8rem;
+      background: linear-gradient(90deg, #fff, #ffcc70, #ff6ec7, #32e0c4);
+      background-size: 400%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glitter 6s linear infinite;
+    }
+    @keyframes glitter {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    header a.btn {
+      margin-top: 20px; display: inline-block;
+      padding: 12px 24px; border-radius: 30px;
+      background: rgba(255,255,255,0.2);
+      color: #fff; text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    header a.btn:hover {
+      background: rgba(255,255,255,0.5);
+      transform: scale(1.05);
+    }
+    section {
+      max-width: 900px; margin: 50px auto; padding: 20px;
+      border-radius: 12px; background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+    h2 { color: #ffcc70; margin-bottom: 15px; text-transform: uppercase; }
+    ul { list-style: none; }
+    ul li { margin: 12px 0; padding: 12px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
+    }
+    footer { text-align: center; padding: 20px; margin-top: 40px;
+      background: rgba(0,0,0,0.7);
+    }
+  </style>
+</head>
+<body>
+  <!-- Social Icons -->
+  <div class="social-bar">
+    <a href="mailto:rahulpandeyk8220@gmail.com" title="Email">
+      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+    </a>
+    <a href="https://github.com/" target="_blank" title="GitHub">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+    </a>
+    <a href="https://linkedin.com" target="_blank" title="LinkedIn">
+      <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn">
+    </a>
+  </div>
+
+  <!-- Hero -->
+  <header>
+    <h1>Rahul K</h1>
+    <a href="#about" class="btn" id="exploreBtn">Explore Portfolio</a>
+  </header>
+
+  <!-- Profile Info -->
+  <section id="profile">
+    <h2>Profile Info</h2>
+    <p><strong>From:</strong> Tirunelveli, Tamil Nadu</p>
+    <p><strong>B.Tech:</strong> AI & Data Science (CGPA: 7.36) - National Engineering College</p>
+    <p><strong>12th:</strong> Francis Xavier School (CBSE) – 75.2%</p>
+    <p><strong>10th:</strong> Francis Xavier School (CBSE) – 73.4%</p>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>AI & Data Science student skilled in Python, SQL, and machine learning. Passionate about building real-world solutions through data-driven projects. Eager to contribute to innovative AI/ML applications in a dynamic team environment.</p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Programming: Python, Java (Basics), SQL</li>
+      <li>Libraries: Pandas, NumPy, OpenCV, Scikit-learn, Matplotlib</li>
+      <li>Languages: English, Tamil</li>
+    </ul>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li>
+        <strong>AuraCare – Mental Health Companion</strong><br>
+        • Built for users suffer from mental health disoder. Interact with both text and voice-based interaction.<br>
+        • Integrated LLM (Gemini 2.5pro) with sentiment analysis to detect emotional state.<br>
+        • Developed using Python, NLP, and deployed via React interface.<br>
+        • Helps provide mental health support in a friendly and accessible way.
+      </li>
+      <li>
+        <strong>Object Detection System (YOLO v8)</strong><br>
+        • Real-time object detection & classification on image/video streams.<br>
+        • Implemented YOLOv8 for multi-object tracking.<br>
+        • Applied in safety, automation, and smart surveillance projects.<br>
+        • Demonstrated high accuracy and efficiency in live camera feeds.
+      </li>
+    </ul>
+  </section>
+
+  <!-- Internship -->
+  <section id="internship">
+    <h2>Internship</h2>
+    <p><strong>AI/ML Intern – Lyanaa AI Pvt. Ltd. (Jan 2025 – June 2025)</strong></p>
+    <ul>
+      <li>Worked on real-time AI/ML projects.</li>
+      <li>Collaborated on chatbot design using LLMs for targeted use cases.</li>
+      <li>Gained industry exposure in AI project deployment and teamwork.</li>
+    </ul>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <ul>
+      <li>Winner – Data Dive Contest @ SECE, Coimbatore (Feb 2025)</li>
+      <li>Runner-up – Chatbot Creation Contest-II @ SECE, Coimbatore (Sept 2023)</li>
+      <li>Participated – Hack-Elite AI Hackathon @ SMVEC, Puducherry</li>
+    </ul>
+  </section>
+
+  <!-- Conferences -->
+  <section id="conferences">
+    <h2>Conferences & Workshops</h2>
+    <ul>
+      <li>International Conference on Data Science – St. Xavier’s College (Autonomous)</li>
+      <li>Web Application Development – BIT, Sathyamangalam (May 2023)</li>
+      <li>Predictive Analytics & Data Visualization – SECE, Coimbatore (Sept 2023)</li>
+    </ul>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <h2>Certifications</h2>
+    <ul>
+      <li>Data Science for Engineers – NPTEL</li>
+      <li>Internet of Things – NPTEL</li>
+      <li>Basics of EDA – Great Learning</li>
+      <li>Statistical Methods for Decision Making – Great Learning</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Rahul K | All Rights Reserved</p>
+  </footer>
+
+  <!-- Smooth Scroll -->
+  <script>
+    document.getElementById("exploreBtn").addEventListener("click", function(e) {
+      e.preventDefault();
+      document.querySelector("#about").scrollIntoView({behavior:"smooth"});
+    });
+  </script>
+</body>
+</html>
