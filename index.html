@@ -1,207 +1,422 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rahul K - Portfolio</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0d0d0d;
-      color: #fff;
-      scroll-behavior: smooth;
-    }
-    body::before {
-      content: "";
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(270deg, #ff6ec7, #7367f0, #32e0c4, #ffcc70);
-      background-size: 800% 800%;
-      animation: gradientShift 20s ease infinite;
-      z-index: -2;
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    .social-bar {
-      position: fixed; top: 20px; right: 30px;
-      display: flex; gap: 20px; z-index: 10;
-    }
-    .social-bar a img {
-      width: 28px; height: 28px;
-      filter: drop-shadow(0 0 5px rgba(255,255,255,0.6));
-      transition: transform 0.3s, filter 0.3s;
-    }
-    .social-bar a:hover img {
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 8px #ffcc70);
-    }
-    header {
-      height: 70vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-    }
-    header h1 {
-      font-size: 3.8rem;
-      background: linear-gradient(90deg, #fff, #ffcc70, #ff6ec7, #32e0c4);
-      background-size: 400%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: glitter 6s linear infinite;
-    }
-    @keyframes glitter {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    header a.btn {
-      margin-top: 20px; display: inline-block;
-      padding: 12px 24px; border-radius: 30px;
-      background: rgba(255,255,255,0.2);
-      color: #fff; text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    header a.btn:hover {
-      background: rgba(255,255,255,0.5);
-      transform: scale(1.05);
-    }
-    section {
-      max-width: 900px; margin: 50px auto; padding: 20px;
-      border-radius: 12px; background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-    }
-    h2 { color: #ffcc70; margin-bottom: 15px; text-transform: uppercase; }
-    ul { list-style: none; }
-    ul li { margin: 12px 0; padding: 12px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 6px;
-    }
-    footer { text-align: center; padding: 20px; margin-top: 40px;
-      background: rgba(0,0,0,0.7);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rahul K | AI & Data Science Portfolio</title>
+    <style>
+        /* Global Styles & Dark Theme */
+        :root {
+            --primary-color: #00aaff;
+            --secondary-color: #ff00c8;
+            --background-color: #0a0a1a;
+            --card-background: rgba(255, 255, 255, 0.05);
+            --text-color: #e0e0e0;
+            --header-color: #ffffff;
+            --border-glow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color), 0 0 15px var(--primary-color);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 15% 15%, rgba(0, 170, 255, 0.2), transparent 30%),
+                              radial-gradient(circle at 85% 75%, rgba(255, 0, 200, 0.2), transparent 30%);
+            background-attachment: fixed;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background: var(--primary-color);
+            color: #fff;
+        }
+
+        /* Reusable Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Headings */
+        h1, h2, h3 {
+            color: var(--header-color);
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--card-background);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2rem;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            transform-style: preserve-3d;
+        }
+
+        .glass-card:hover {
+            transform: perspective(1000px) rotateY(5deg) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px var(--primary-color);
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes backgroundPan {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Section Specific Styles */
+        .section {
+             animation: fadeIn 1s ease-out;
+             padding-top: 4rem; /* Adjust for navbar */
+        }
+
+        /* Add this to your existing CSS */
+        html {
+            scroll-behavior: smooth; /* Enables smooth scrolling */
+        }
+
+        .bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Send the canvas to the background */
+            pointer-events: none; /* Prevent interaction with the canvas */
+        }
+    </style>
+    <!-- Add this in the <head> section to include Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Social Icons -->
-  <div class="social-bar">
-    <a href="mailto:rahulpandeyk8220@gmail.com" title="Email">
-      <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
-    </a>
-    <a href="https://github.com/" target="_blank" title="GitHub">
-      <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
-    </a>
-    <a href="https://linkedin.com" target="_blank" title="LinkedIn">
-      <img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn">
-    </a>
-  </div>
 
-  <!-- Hero -->
-  <header>
-    <h1>Rahul K</h1>
-    <a href="#about" class="btn" id="exploreBtn">Explore Portfolio</a>
-  </header>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="#about">About Me</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#profiles">Profiles</a>
+        <a href="#certifications">Certificates</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/rahul2716" target="_blank" style="margin-left: auto; color: var(--primary-color); font-size: 1.2rem; text-decoration: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 20px; vertical-align: middle; margin-right: 5px;"> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/k-rahul-4ba91b219/" target="_blank" style="color: var(--primary-color); font-size: 1.2rem; text-decoration: none;">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 20px; vertical-align: middle; margin-right: 5px;"> LinkedIn
+        </a>
+    </div>
 
-  <!-- Profile Info -->
-  <section id="profile">
-    <h2>Profile Info</h2>
-    <p><strong>From:</strong> Tirunelveli, Tamil Nadu</p>
-    <p><strong>B.Tech:</strong> AI & Data Science (CGPA: 7.36) - National Engineering College</p>
-    <p><strong>12th:</strong> Francis Xavier School (CBSE) – 75.2%</p>
-    <p><strong>10th:</strong> Francis Xavier School (CBSE) – 73.4%</p>
-  </section>
+    <section class="section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
+        <div style="animation: fadeIn 1.5s ease-out;">
+            <h1 style="font-size: 4rem; margin: 0; color: white; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: backgroundPan 10s linear infinite;">Rahul K</h1>
+            <p style="font-size: 1.5rem; margin: 10px 0 30px; letter-spacing: 1px;">AI & Data Science Student | Building intelligent solutions with data.</p>
+            <a href="#about" style="background: transparent; border: 2px solid var(--primary-color); color: var(--primary-color); padding: 12px 25px; text-decoration: none; border-radius: 50px; font-weight: bold; transition: all 0.3s ease;">Explore</a>
+        </div>
+    </section>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>AI & Data Science student skilled in Python, SQL, and machine learning. Passionate about building real-world solutions through data-driven projects. Eager to contribute to innovative AI/ML applications in a dynamic team environment.</p>
-  </section>
+    <!-- Canvas for Particles -->
+    <canvas class="bubbles"></canvas>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li>Programming: Python, Java (Basics), SQL</li>
-      <li>Libraries: Pandas, NumPy, OpenCV, Scikit-learn, Matplotlib</li>
-      <li>Languages: English, Tamil</li>
-    </ul>
-  </section>
+    <!-- Rest of the content -->
+    <div id="about" class="container section">
+        <h2>About Me</h2>
+        <div class="glass-card" style="display: flex; align-items: center; flex-wrap: wrap; gap: 2rem;">
+            <img src="https://i.ibb.co/ksGqm1pw/Gemini-Generated-Image-jfyqwkjfyqwkjfyq.png" alt="Rahul K" style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; border: 3px solid var(--primary-color); box-shadow: var(--border-glow); transition: transform 0.4s ease;">
+            <div style="flex: 1; min-width: 300px;">
+                <p style="font-size: 1.1rem; line-height: 1.7;">
+                    AI & Data Science student skilled in Python, SQL, and machine learning. Passionate about building real-world solutions through data-driven projects. Eager to contribute to innovative AI/ML applications in a dynamic team environment.
+                </p>
+                <a href="https://drive.google.com/file/d/1gOfO403OjoFw9vZQ4xGilfDbDXekIYGD/view?usp=sharing" style="background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">Download Resume</a>
+            </div>
+        </div>
+    </div>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <ul>
-      <li>
-        <strong>AuraCare – Mental Health Companion</strong><br>
-        • Built for users suffer from mental health disoder. Interact with both text and voice-based interaction.<br>
-        • Integrated LLM (Gemini 2.5pro) with sentiment analysis to detect emotional state.<br>
-        • Developed using Python, NLP, and deployed via React interface.<br>
-        • Helps provide mental health support in a friendly and accessible way.
-      </li>
-      <li>
-        <strong>Object Detection System (YOLO v8)</strong><br>
-        • Real-time object detection & classification on image/video streams.<br>
-        • Implemented YOLOv8 for multi-object tracking.<br>
-        • Applied in safety, automation, and smart surveillance projects.<br>
-        • Demonstrated high accuracy and efficiency in live camera feeds.
-      </li>
-    </ul>
-  </section>
+    <div id="experience" class="container section">
+        <h2>Experience</h2>
+        <div class="glass-card" style="padding: 2rem; text-align: left; display: flex; align-items: center; gap: 1.5rem; flex-direction: row;">
+            <!-- Experience Details -->
+            <div>
+                <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">AI/ML Intern – Lyanaa AI Pvt. Ltd.</h3>
+                <p style="margin: 0; font-size: 1rem; color: var(--text-color);"><b>Jan 2025 – June 2025</b></p>
+                <ul style="margin: 1rem 0 0 1.5rem; padding: 0; list-style-type: disc; color: var(--text-color);">
+                    <li>Worked on real-time projects.</li>
+                    <li>Collaborated on chatbot design using LLMs for targeted use cases.</li>
+                </ul>
+                <p>Issued by: Lyanaa AI</p>
+                <a href="https://i.ibb.co/hRrZgcNw/lyanaa.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+            </div>
 
-  <!-- Internship -->
-  <section id="internship">
-    <h2>Internship</h2>
-    <p><strong>AI/ML Intern – Lyanaa AI Pvt. Ltd. (Jan 2025 – June 2025)</strong></p>
-    <ul>
-      <li>Worked on real-time AI/ML projects.</li>
-      <li>Collaborated on chatbot design using LLMs for targeted use cases.</li>
-      <li>Gained industry exposure in AI project deployment and teamwork.</li>
-    </ul>
-  </section>
+            
+        </div>
+    </div>
 
-  <!-- Achievements -->
-  <section id="achievements">
-    <h2>Achievements</h2>
-    <ul>
-      <li>Winner – Data Dive Contest @ SECE, Coimbatore (Feb 2025)</li>
-      <li>Runner-up – Chatbot Creation Contest-II @ SECE, Coimbatore (Sept 2023)</li>
-      <li>Participated – Hack-Elite AI Hackathon @ SMVEC, Puducherry</li>
-    </ul>
-  </section>
+    <div id="projects" class="container section">
+        <h2>Projects</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+            <div class="glass-card">
+                <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-top: 0;">AuraCare - Mental Health Companion</h3>
+                <p>Designed a chatbot for users suffering from mental health disorders, enabling text and voice-based interaction.</p>
+                <p><b>Tech Used:</b> Python, Flask, LLM's, React.</p>
+                <a href="https://github.com/rahul2716/AuraCare" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View on GitHub</a>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-top: 0;">Object Detection System (YOLO v8)</h3>
+                <p>Developed a system for real-time object detection and classification, applicable to both image and video streams.</p>
+                <p><b>Tech Used:</b> Python, YOLO v8, OpenCV.</p>
+                <a href="https://github.com/rahul2716/object-detection" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View on GitHub</a>
+            </div>
+        </div>
+    </div>
 
-  <!-- Conferences -->
-  <section id="conferences">
-    <h2>Conferences & Workshops</h2>
-    <ul>
-      <li>International Conference on Data Science – St. Xavier’s College (Autonomous)</li>
-      <li>Web Application Development – BIT, Sathyamangalam (May 2023)</li>
-      <li>Predictive Analytics & Data Visualization – SECE, Coimbatore (Sept 2023)</li>
-    </ul>
-  </section>
+    <div id="skills" class="container section">
+        <h2>Skills</h2>
+        <div class="glass-card">
+            <h3 style="text-align: center; color: var(--primary-color);">Programming Languages</h3>
+            <div style="text-align: center; margin-bottom: 2rem; padding: 1rem 0;">
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fab fa-python" style="color: #ffdd54; margin-right: 8px;"></i>Python
+                </span>
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fab fa-java" style="color: #f89820; margin-right: 8px;"></i>Java
+                </span>
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fas fa-database" style="color: #00758f; margin-right: 8px;"></i>SQL
+                </span>
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fab fa-html5" style="color: #e34c26; margin-right: 8px;"></i>HTML
+                </span>
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fab fa-css3-alt" style="color: #264de4; margin-right: 8px;"></i>CSS
+                </span>
+            </div>
+            <h3 style="text-align: center; color: var (--primary-color);">Tools & Libraries</h3>
+            <div style="text-align: center; padding: 1rem 0;">
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fas fa-chart-bar" style="color: #ffdd54; margin-right: 8px;"></i>Pandas
+                </span>
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fas fa-square-root-alt" style="color: #4caf50; margin-right: 8px;"></i>NumPy
+                </span>
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fas fa-camera" style="color: #ff5722; margin-right: 8px;"></i>OpenCV
+                </span>
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fas fa-brain" style="color: #673ab7; margin-right: 8px;"></i>Scikit-learn
+                </span>
+                <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
+                    <i class="fab fa-react" style="color: #61dafb; margin-right: 8px;"></i>React JS
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <div id="profiles" class="container section">
+        <h2>Coding Profiles</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: center;">
+            <!-- GitHub Profile -->
+            <a href="https://github.com/rahul2716" class="glass-card" style="text-decoration: none; color: var(--text-color); padding: 2rem 1rem;">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo" style="width: 50px; margin-bottom: 10px;">
+                <h3 style="color: white; margin: 0;">GitHub</h3>
+                <p>View My Projects</p>
+            </a>
 
-  <!-- Certifications -->
-  <section id="certifications">
-    <h2>Certifications</h2>
-    <ul>
-      <li>Data Science for Engineers – NPTEL</li>
-      <li>Internet of Things – NPTEL</li>
-      <li>Basics of EDA – Great Learning</li>
-      <li>Statistical Methods for Decision Making – Great Learning</li>
-    </ul>
-  </section>
+            <!-- LeetCode Profile -->
+            <a href="https://leetcode.com/u/rahul2725/" class="glass-card" style="text-decoration: none; color: var(--text-color); padding: 2rem 1rem;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode Logo" style="width: 50px; margin-bottom: 10px;">
+                <h3 style="color: white; margin: 0;">LeetCode</h3>
+                <p>Problem Solving</p>
+            </a>
+        </div>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 Rahul K | All Rights Reserved</p>
-  </footer>
+    <div id="certifications" class="container section">
+        <h2>Certifications</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: center;">
+            <div class="glass-card">
+                <h3 style="color: var(--primary-color);">Data Science for Engineers</h3>
+                <p>Issued by: NPTEL</p>
+                <a href="https://i.ibb.co/JwS21zrn/dse.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--primary-color);">Internet of Things</h3>
+                <p>Issued by: NPTEL</p>
+                <a href="https://i.ibb.co/XZGFB5Mk/iot.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--primary-color);">Introduction to Artificial Intelligence</h3>
+                <p>Issued by: Great Learning</p>
+                <a href="https://i.ibb.co/zVmVB3DX/ai.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--primary-color);">Statistical Methods for Decision Making</h3>
+                <p>Issued by: Great Learning</p>
+                <a href="https://i.ibb.co/wFkKG1pD/stats.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+            </div>
+            <div class="glass-card">
+                <h3 style="color: var(--primary-color);">Introduction To Industry 4.0 And Industrial 
+                    Internet Of Things 
+                   </h3>
+                <p>Issued by: NPTEL</p>
+                <a href="https://i.ibb.co/WvSdPFgK/iiot.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+            </div>
+        </div>
+    </div>
 
-  <!-- Smooth Scroll -->
-  <script>
-    document.getElementById("exploreBtn").addEventListener("click", function(e) {
-      e.preventDefault();
-      document.querySelector("#about").scrollIntoView({behavior:"smooth"});
-    });
-  </script>
+    <div id="contact" class="container section">
+        <h2>Get In Touch / Find Me Online</h2>
+
+        <!-- Contact Form -->
+        <div class="glass-card" style="text-align: left; max-width: 600px; margin: 2rem auto; padding: 2rem;">
+            <h3 style="color: var(--primary-color); text-align: center;">Send Me a Message</h3>
+            <form id="contact-form">
+                <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid var(--primary-color); border-radius: 5px; background: #333; color: var(--text-color);">
+                <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid var(--primary-color); border-radius: 5px; background: #333; color: var(--text-color);"></textarea>
+                <button type="submit" style="background: var(--primary-color); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem;">Send Message</button>
+            </form>
+            <div id="form-status" style="margin-top: 1rem; color: var(--text-color);"></div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle form submission
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            document.getElementById('form-status').innerText = "Thank you! Rahul has been notified.";
+            document.getElementById('contact-form').reset(); // Reset the form fields
+        });
+
+        const canvas = document.querySelector(".bubbles");
+        const ctx = canvas.getContext("2d");
+        const bubbleCount = 50; // Number of bubbles
+        const bubbles = [];
+
+        // Set canvas size to match the window
+        function setCanvasSize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        // Create bubbles with random properties
+        function createBubbles() {
+            for (let i = 0; i < bubbleCount; i++) {
+                bubbles.push({
+                    x: Math.random() * canvas.width, // Random x position
+                    y: Math.random() * canvas.height, // Random y position
+                    radius: Math.random() * 10 + 5, // Random size
+                    speed: Math.random() * 2 + 1, // Random upward speed
+                    opacity: Math.random() * 0.5 + 0.3, // Random opacity
+                    color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.7)` // Random color
+                });
+            }
+        }
+
+        // Draw bubbles on the canvas
+        function drawBubbles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+            bubbles.forEach((bubble) => {
+                ctx.beginPath();
+                ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+                ctx.fillStyle = bubble.color;
+                ctx.globalAlpha = bubble.opacity;
+                ctx.fill();
+            });
+        }
+
+        // Update bubble positions
+        function updateBubbles() {
+            bubbles.forEach((bubble) => {
+                bubble.y -= bubble.speed; // Move bubble upward
+                if (bubble.y + bubble.radius < 0) {
+                    // Reset bubble to the bottom when it goes off-screen
+                    bubble.y = canvas.height + bubble.radius;
+                    bubble.x = Math.random() * canvas.width;
+                    bubble.radius = Math.random() * 10 + 5;
+                    bubble.speed = Math.random() * 2 + 1;
+                    bubble.opacity = Math.random() * 0.5 + 0.3;
+                    bubble.color = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.7)`;
+                }
+            });
+        }
+
+        // Animate the bubbles
+        function animateBubbles() {
+            drawBubbles();
+            updateBubbles();
+            requestAnimationFrame(animateBubbles);
+        }
+
+        // Initialize the canvas and bubbles
+        setCanvasSize();
+        createBubbles();
+        animateBubbles();
+
+        // Adjust canvas size on window resize
+        window.addEventListener("resize", () => {
+            setCanvasSize();
+            bubbles.length = 0; // Clear existing bubbles
+            createBubbles(); // Recreate bubbles
+        });
+    </script>
 </body>
 </html>
+
+
