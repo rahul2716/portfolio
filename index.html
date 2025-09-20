@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rahul K | AI & Data Science Portfolio</title>
+    <title>Rahul K's Portfolio</title>
     <style>
-        /* Global Styles & Dark Theme */
+        /* Global Styles & Green Theme */
         :root {
-            --primary-color: #00aaff;
-            --secondary-color: #ff00c8;
+            --primary-color: #00ff99;
+            --secondary-color: #00cc66;
             --background-color: #0a0a1a;
             --card-background: rgba(255, 255, 255, 0.05);
             --text-color: #e0e0e0;
@@ -17,15 +17,20 @@
         }
 
         body {
-            background-color: var(--background-color);
             color: var(--text-color);
             font-family: 'Segoe UI', Roboto, sans-serif;
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 15% 15%, rgba(0, 170, 255, 0.2), transparent 30%),
-                              radial-gradient(circle at 85% 75%, rgba(255, 0, 200, 0.2), transparent 30%);
-            background-attachment: fixed;
+        }
+
+        #vanta-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
         }
 
         /* Navigation Bar */
@@ -47,17 +52,17 @@
         .navbar a {
             color: var(--text-color);
             text-decoration: none;
-            margin: 0 1rem;
-            font-size: 1rem;
+            margin: 0 0.5rem; /* Reduce horizontal spacing */
+            font-size: 0.9rem; /* Reduce font size */
             font-weight: bold;
-            padding: 0.5rem 1rem;
+            padding: 0.3rem 0.8rem; /* Reduce padding */
             border-radius: 5px;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
         .navbar a:hover {
             background: var(--primary-color);
-            color: #fff;
+            color: #000;
         }
 
         /* Reusable Container */
@@ -124,29 +129,57 @@
 
         /* Section Specific Styles */
         .section {
+             position: relative;
+             z-index: 1;
              animation: fadeIn 1s ease-out;
              padding-top: 4rem; /* Adjust for navbar */
         }
 
-        /* Add this to your existing CSS */
         html {
             scroll-behavior: smooth; /* Enables smooth scrolling */
         }
 
-        .bubbles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Send the canvas to the background */
-            pointer-events: none; /* Prevent interaction with the canvas */
+        .social-bar {
+            position: fixed; /* Keeps the icons fixed on the screen */
+            top: 50%; /* Centers the icons vertically */
+            right: 20px; /* Positions the icons on the right side */
+            transform: translateY(-50%); /* Adjusts for vertical centering */
+            display: flex; /* Enables flexbox layout */
+            flex-direction: column; /* Stacks the icons vertically */
+            gap: 15px; /* Adds spacing between the icons */
+            z-index: 1000; /* Ensures the icons are above other elements */
+        }
+
+        .social-bar a {
+            display: block; /* Ensures each icon is treated as a block element */
+            width: 40px; /* Sets the width of the icons */
+            height: 40px; /* Sets the height of the icons */
+            background-color: rgba(255, 255, 255, 0.1); /* Adds a subtle background */
+            border-radius: 50%; /* Makes the icons circular */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow for depth */
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
+        }
+
+        .social-bar a:hover {
+            transform: scale(1.1); /* Slightly enlarges the icon on hover */
+            background-color: rgba(255, 255, 255, 0.3); /* Lightens the background on hover */
+        }
+
+        .social-bar img {
+            width: 100%; /* Ensures the image fills the container */
+            height: 100%; /* Ensures the image fills the container */
+            object-fit: cover; /* Maintains the aspect ratio of the image */
+            border-radius: 50%; /* Ensures the image is circular */
         }
     </style>
     <!-- Add this in the <head> section to include Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Include Three.js and Vanta.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.waves.min.js"></script>
 </head>
 <body>
+    <div id="vanta-bg"></div>
 
     <!-- Navigation Bar -->
     <div class="navbar">
@@ -157,14 +190,16 @@
         <a href="#profiles">Profiles</a>
         <a href="#certifications">Certificates</a>
         <a href="#contact">Contact</a>
-        <a href="https://github.com/rahul2716" target="_blank" style="margin-left: auto; color: var(--primary-color); font-size: 1.2rem; text-decoration: none;">
-            <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" style="width: 20px; vertical-align: middle; margin-right: 5px;"> GitHub
-        </a>
-        <a href="https://www.linkedin.com/in/k-rahul-4ba91b219/" target="_blank" style="color: var(--primary-color); font-size: 1.2rem; text-decoration: none;">
-            <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width: 20px; vertical-align: middle; margin-right: 5px;"> LinkedIn
-        </a>
     </div>
 
+    <!-- Social Media Bar -->
+    <div class="social-bar">
+        <a href="mailto:rahulpandeyk8220@gmail.com" title="Email"><img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email"></a>
+        <a href="https://github.com/rahul2716" target="_blank" title="GitHub"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub"></a>
+        <a href="https://www.linkedin.com/in/k-rahul-4ba91b219/" target="_blank" title="LinkedIn"><img src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn"></a>
+    </div>
+
+    <!-- Hero Section -->
     <section class="section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 2rem;">
         <div style="animation: fadeIn 1.5s ease-out;">
             <h1 style="font-size: 4rem; margin: 0; color: white; background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: backgroundPan 10s linear infinite;">Rahul K</h1>
@@ -173,10 +208,7 @@
         </div>
     </section>
 
-    <!-- Canvas for Particles -->
-    <canvas class="bubbles"></canvas>
-
-    <!-- Rest of the content -->
+    <!-- About Me Section -->
     <div id="about" class="container section">
         <h2>About Me</h2>
         <div class="glass-card" style="display: flex; align-items: center; flex-wrap: wrap; gap: 2rem;">
@@ -185,15 +217,15 @@
                 <p style="font-size: 1.1rem; line-height: 1.7;">
                     AI & Data Science student skilled in Python, SQL, and machine learning. Passionate about building real-world solutions through data-driven projects. Eager to contribute to innovative AI/ML applications in a dynamic team environment.
                 </p>
-                <a href="https://drive.google.com/file/d/1gOfO403OjoFw9vZQ4xGilfDbDXekIYGD/view?usp=sharing" style="background: linear-gradient(90deg, var(--primary-color), var(--secondary-color)); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">Download Resume</a>
+                <a href="https://drive.google.com/file/d/1gOfO403OjoFw9vZQ4xGilfDbDXekIYGD/view?usp=sharing" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">Download Resume</a>
             </div>
         </div>
     </div>
 
+    <!-- Experience Section -->
     <div id="experience" class="container section">
         <h2>Experience</h2>
         <div class="glass-card" style="padding: 2rem; text-align: left; display: flex; align-items: center; gap: 1.5rem; flex-direction: row;">
-            <!-- Experience Details -->
             <div>
                 <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">AI/ML Intern – Lyanaa AI Pvt. Ltd.</h3>
                 <p style="margin: 0; font-size: 1rem; color: var(--text-color);"><b>Jan 2025 – June 2025</b></p>
@@ -202,13 +234,12 @@
                     <li>Collaborated on chatbot design using LLMs for targeted use cases.</li>
                 </ul>
                 <p>Issued by: Lyanaa AI</p>
-                <a href="https://i.ibb.co/hRrZgcNw/lyanaa.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+                <a href="https://i.ibb.co/hRrZgcNw/lyanaa.png" target="_blank" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
             </div>
-
-            
         </div>
     </div>
 
+    <!-- Projects Section -->
     <div id="projects" class="container section">
         <h2>Projects</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
@@ -216,17 +247,18 @@
                 <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-top: 0;">AuraCare - Mental Health Companion</h3>
                 <p>Designed a chatbot for users suffering from mental health disorders, enabling text and voice-based interaction.</p>
                 <p><b>Tech Used:</b> Python, Flask, LLM's, React.</p>
-                <a href="https://github.com/rahul2716/AuraCare" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View on GitHub</a>
+                <a href="https://github.com/rahul2716/AuraCare" target="_blank" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View on GitHub</a>
             </div>
             <div class="glass-card">
                 <h3 style="color: var(--primary-color); font-size: 1.5rem; margin-top: 0;">Object Detection System (YOLO v8)</h3>
                 <p>Developed a system for real-time object detection and classification, applicable to both image and video streams.</p>
                 <p><b>Tech Used:</b> Python, YOLO v8, OpenCV.</p>
-                <a href="https://github.com/rahul2716/object-detection" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View on GitHub</a>
+                <a href="https://github.com/rahul2716/object-detection" target="_blank" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View on GitHub</a>
             </div>
         </div>
     </div>
 
+    <!-- Skills Section -->
     <div id="skills" class="container section">
         <h2>Skills</h2>
         <div class="glass-card">
@@ -239,16 +271,16 @@
                     <i class="fab fa-java" style="color: #f89820; margin-right: 8px;"></i>Java
                 </span>
                 <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
-                    <i class="fas fa-database" style="color: #00758f; margin-right: 8px;"></i>SQL
+                    <i class="fas fa-database" style="color: var(--primary-color); margin-right: 8px;"></i>SQL
                 </span>
                 <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
                     <i class="fab fa-html5" style="color: #e34c26; margin-right: 8px;"></i>HTML
                 </span>
                 <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
-                    <i class="fab fa-css3-alt" style="color: #264de4; margin-right: 8px;"></i>CSS
+                    <i class="fab fa-css3-alt" style="color: var(--primary-color); margin-right: 8px;"></i>CSS
                 </span>
             </div>
-            <h3 style="text-align: center; color: var (--primary-color);">Tools & Libraries</h3>
+            <h3 style="text-align: center; color: var(--primary-color);">Tools & Libraries</h3>
             <div style="text-align: center; padding: 1rem 0;">
                 <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
                     <i class="fas fa-chart-bar" style="color: #ffdd54; margin-right: 8px;"></i>Pandas
@@ -263,23 +295,21 @@
                     <i class="fas fa-brain" style="color: #673ab7; margin-right: 8px;"></i>Scikit-learn
                 </span>
                 <span style="display: inline-block; background: #333; padding: 8px 15px; margin: 5px; border-radius: 20px; transition: all 0.3s ease; cursor: pointer;">
-                    <i class="fab fa-react" style="color: #61dafb; margin-right: 8px;"></i>React JS
+                    <i class="fab fa-react" style="color: var(--primary-color); margin-right: 8px;"></i>React JS
                 </span>
             </div>
         </div>
     </div>
     
+    <!-- Coding Profiles Section -->
     <div id="profiles" class="container section">
         <h2>Coding Profiles</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: center;">
-            <!-- GitHub Profile -->
             <a href="https://github.com/rahul2716" class="glass-card" style="text-decoration: none; color: var(--text-color); padding: 2rem 1rem;">
                 <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub Logo" style="width: 50px; margin-bottom: 10px;">
                 <h3 style="color: white; margin: 0;">GitHub</h3>
                 <p>View My Projects</p>
             </a>
-
-            <!-- LeetCode Profile -->
             <a href="https://leetcode.com/u/rahul2725/" class="glass-card" style="text-decoration: none; color: var(--text-color); padding: 2rem 1rem;">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode Logo" style="width: 50px; margin-bottom: 10px;">
                 <h3 style="color: white; margin: 0;">LeetCode</h3>
@@ -288,49 +318,49 @@
         </div>
     </div>
 
+    <!-- Certifications Section -->
     <div id="certifications" class="container section">
         <h2>Certifications</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: center;">
             <div class="glass-card">
                 <h3 style="color: var(--primary-color);">Data Science for Engineers</h3>
                 <p>Issued by: NPTEL</p>
-                <a href="https://i.ibb.co/JwS21zrn/dse.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+                <a href="https://i.ibb.co/JwS21zrn/dse.png" target="_blank" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
             </div>
             <div class="glass-card">
                 <h3 style="color: var(--primary-color);">Internet of Things</h3>
                 <p>Issued by: NPTEL</p>
-                <a href="https://i.ibb.co/XZGFB5Mk/iot.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+                <a href="https://i.ibb.co/XZGFB5Mk/iot.png" target="_blank" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
             </div>
             <div class="glass-card">
                 <h3 style="color: var(--primary-color);">Introduction to Artificial Intelligence</h3>
                 <p>Issued by: Great Learning</p>
-                <a href="https://i.ibb.co/zVmVB3DX/ai.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+                <a href="https://i.ibb.co/zVmVB3DX/ai.png" target="_blank" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
             </div>
             <div class="glass-card">
                 <h3 style="color: var(--primary-color);">Statistical Methods for Decision Making</h3>
                 <p>Issued by: Great Learning</p>
-                <a href="https://i.ibb.co/wFkKG1pD/stats.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+                <a href="https://i.ibb.co/wFkKG1pD/stats.png" target="_blank" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
             </div>
             <div class="glass-card">
                 <h3 style="color: var(--primary-color);">Introduction To Industry 4.0 And Industrial 
                     Internet Of Things 
                    </h3>
                 <p>Issued by: NPTEL</p>
-                <a href="https://i.ibb.co/WvSdPFgK/iiot.png" target="_blank" style="background: var(--primary-color); color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
+                <a href="https://i.ibb.co/WvSdPFgK/iiot.png" target="_blank" style="background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-block; margin-top: 1rem;">View Certificate</a>
             </div>
         </div>
     </div>
 
+    <!-- Contact Section -->
     <div id="contact" class="container section">
         <h2>Get In Touch / Find Me Online</h2>
-
-        <!-- Contact Form -->
         <div class="glass-card" style="text-align: left; max-width: 600px; margin: 2rem auto; padding: 2rem;">
             <h3 style="color: var(--primary-color); text-align: center;">Send Me a Message</h3>
             <form id="contact-form">
                 <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid var(--primary-color); border-radius: 5px; background: #333; color: var(--text-color);">
                 <textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; margin: 10px 0; border: 1px solid var(--primary-color); border-radius: 5px; background: #333; color: var(--text-color);"></textarea>
-                <button type="submit" style="background: var(--primary-color); color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem;">Send Message</button>
+                <button type="submit" style="background: transparent; color: var(--primary-color); padding: 10px 20px; border: 1px solid var(--primary-color); border-radius: 5px; cursor: pointer; font-size: 1rem;">Send Message</button>
             </form>
             <div id="form-status" style="margin-top: 1rem; color: var(--text-color);"></div>
         </div>
@@ -344,76 +374,18 @@
             document.getElementById('contact-form').reset(); // Reset the form fields
         });
 
-        const canvas = document.querySelector(".bubbles");
-        const ctx = canvas.getContext("2d");
-        const bubbleCount = 50; // Number of bubbles
-        const bubbles = [];
-
-        // Set canvas size to match the window
-        function setCanvasSize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-
-        // Create bubbles with random properties
-        function createBubbles() {
-            for (let i = 0; i < bubbleCount; i++) {
-                bubbles.push({
-                    x: Math.random() * canvas.width, // Random x position
-                    y: Math.random() * canvas.height, // Random y position
-                    radius: Math.random() * 10 + 5, // Random size
-                    speed: Math.random() * 2 + 1, // Random upward speed
-                    opacity: Math.random() * 0.5 + 0.3, // Random opacity
-                    color: `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.7)` // Random color
-                });
-            }
-        }
-
-        // Draw bubbles on the canvas
-        function drawBubbles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-            bubbles.forEach((bubble) => {
-                ctx.beginPath();
-                ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
-                ctx.fillStyle = bubble.color;
-                ctx.globalAlpha = bubble.opacity;
-                ctx.fill();
-            });
-        }
-
-        // Update bubble positions
-        function updateBubbles() {
-            bubbles.forEach((bubble) => {
-                bubble.y -= bubble.speed; // Move bubble upward
-                if (bubble.y + bubble.radius < 0) {
-                    // Reset bubble to the bottom when it goes off-screen
-                    bubble.y = canvas.height + bubble.radius;
-                    bubble.x = Math.random() * canvas.width;
-                    bubble.radius = Math.random() * 10 + 5;
-                    bubble.speed = Math.random() * 2 + 1;
-                    bubble.opacity = Math.random() * 0.5 + 0.3;
-                    bubble.color = `rgba(${Math.random() * 255}, ${Math.random() * 255}, ${Math.random() * 255}, 0.7)`;
-                }
-            });
-        }
-
-        // Animate the bubbles
-        function animateBubbles() {
-            drawBubbles();
-            updateBubbles();
-            requestAnimationFrame(animateBubbles);
-        }
-
-        // Initialize the canvas and bubbles
-        setCanvasSize();
-        createBubbles();
-        animateBubbles();
-
-        // Adjust canvas size on window resize
-        window.addEventListener("resize", () => {
-            setCanvasSize();
-            bubbles.length = 0; // Clear existing bubbles
-            createBubbles(); // Recreate bubbles
+        // Vanta.js background effect
+        VANTA.WAVES({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x20f00,
+            shininess: 19.00
         });
     </script>
 </body>
